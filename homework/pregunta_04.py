@@ -1,3 +1,4 @@
+import csv
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
 datos requeridos se encuentran en el archivo data.csv. En este laboratorio
@@ -26,3 +27,19 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    rta={}
+    with open('files/input/data.csv',newline='',encoding='utf-8') as csvfile:
+        reader=csv.reader(csvfile)
+        for row in reader:
+
+            row1=row[0].split('\t')[2].split('-')
+            print(row1)
+            if row1[1] in rta:
+                rta[row1[1]]+=1
+            else:
+                rta[row1[1]]=1
+    data=[]
+    for k,y in rta.items():
+        data.append((k,y))
+    data.sort(key=lambda x: x[0])
+    return data
