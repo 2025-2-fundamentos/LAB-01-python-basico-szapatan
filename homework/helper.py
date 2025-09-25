@@ -1,6 +1,6 @@
 import csv
 
-def loadfile(filename:str="files\input\data.csv"):
+def loadfile(filename:str="files/input/data.csv"):
     """load file\n
         return list of strings separated by \t
     """
