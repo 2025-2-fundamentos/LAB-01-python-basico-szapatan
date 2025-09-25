@@ -13,6 +13,7 @@ from homework import (
     pregunta_10,
     pregunta_11,
     pregunta_12,
+    helper,
 )
 
 

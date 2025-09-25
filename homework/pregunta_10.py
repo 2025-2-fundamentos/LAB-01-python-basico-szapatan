@@ -1,3 +1,4 @@
+from homework import helper
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
 datos requeridos se encuentran en el archivo data.csv. En este laboratorio
@@ -20,3 +21,18 @@ def pregunta_10():
 
 
     """
+    data=helper.loadfile()
+    lines=helper.mapper(data,map_line)
+    return lines
+    
+
+
+def preprocess_line(x:list[str]):
+    result=[]
+    k=x[0].lower()
+    result.append((k.upper(),len(x[3].split(",")),len(x[4].split(","))))
+    return result
+
+def map_line(x:list[str]):
+    x=preprocess_line(x)
+    return x

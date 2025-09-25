@@ -1,4 +1,5 @@
 import csv
+from homework import helper
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
 datos requeridos se encuentran en el archivo data.csv. En este laboratorio
@@ -16,17 +17,17 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
-    rta={}
-    with open('files/input/data.csv',newline='',encoding='utf-8') as csvfile:
-        reader=csv.reader(csvfile)
-        for row in reader:
-            row1=row[0].split('\t')[:2]
-            if row1[0] in rta:
-                rta[row1[0]]+=int(row1[1])
-            else:
-                rta[row1[0]]=int(row1[1])
-    data=[]
-    for k,y in rta.items():
-        data.append((k,y))
-    data.sort(key=lambda x: x[0])
-    return data
+    data=helper.loadfile()
+    lines=helper.mapper(data,map_line)
+    lines=helper.shuffle_sort(lines,False, lambda x: x[0])
+    lines=helper.reducer(lines)
+    return lines
+    
+
+def preprocess_line(x:list[str]):
+    x=x[:2]
+    return [(x[0],int(x[1]))]
+
+def map_line(x:list[str]):
+    x=preprocess_line(x)
+    return x
