@@ -16,7 +16,7 @@ def pregunta_01():
     214
     """
 
-    data=helper.loadfile("files\\input\\\data.csv")
+    data=helper.loadfile()
     line=helper.mapper(data,map_line)
     
     return sum(line)
